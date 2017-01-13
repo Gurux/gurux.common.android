@@ -100,7 +100,7 @@ if (project.hasProperty('release')) {
                         name project.name
                         description project.description
                         packaging 'jar'
-                        url 'https://github.com/Gurux/gurux.common.android/'
+                        url 'https://github.com/Gurux/gurux.common.android'
 
                         scm {
                             connection 'scm:git:https://github.com/Gurux/gurux.common.android.git'
@@ -133,7 +133,6 @@ if (project.hasProperty('release')) {
 
 nexusStaging {
     packageGroup = "org.gurux"
-    stagingProfileId = "org.gurux.common.android"
 }
 
 task clean(type: Delete) {
