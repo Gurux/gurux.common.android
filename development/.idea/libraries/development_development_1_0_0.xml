@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/build/libs/development-1.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/build/libs/development-1.0.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
