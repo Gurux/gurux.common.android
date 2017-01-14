@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------
 
 group = "org.gurux"
-version = "1.0.0"
+version = "1.0.1"
 
 buildscript {
     repositories {
@@ -54,6 +54,14 @@ allprojects {
 
 apply plugin: 'io.codearte.nexus-staging'
 apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["app\\src\\main\\java"]
+        }
+    }
+}
 
 javadoc {
     source = sourceSets.main.java.srcDirs
