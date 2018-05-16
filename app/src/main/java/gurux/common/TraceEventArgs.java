@@ -40,6 +40,8 @@ import java.util.logging.Logger;
 
 import gurux.common.enums.TraceTypes;
 
+import static java.text.DateFormat.getTimeInstance;
+
 /**
  * Argument class for IGXMedia connection and disconnection events.
  *
@@ -169,8 +171,7 @@ public class TraceEventArgs {
 
     @Override
     public final String toString() {
-        DateFormat df = new SimpleDateFormat("HH:mm:ss");
-        return df.format(getTimestamp()) + "\t" + getType().toString() + "\t"
+        return getTimeInstance().format(getTimestamp()) + "\t" + getType().toString() + "\t"
                 + dataToString(false);
     }
 }

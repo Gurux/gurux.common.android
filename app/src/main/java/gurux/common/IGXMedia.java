@@ -34,7 +34,13 @@
 
 package gurux.common;
 
+import android.app.Activity;
+import android.app.Fragment;
+
 import gurux.common.enums.TraceLevel;
+
+// import android.app.Fragment;
+// import android.app.Activity;
 
 /**
  * Common interface for all Media components.
@@ -236,4 +242,19 @@ public interface IGXMedia {
      * @param value Visible controls.
      */
     void setConfigurableSettings(int value);
+
+    /*
+     * Shows the media Properties dialog.
+     *
+     * @param activity Activity.
+     * @return Returns true if user has accepted changes.
+     */
+    boolean properties(final Activity activity);
+
+    /*
+     * Get properties window fragment.
+     *
+     * @return Properties window fragment.
+     */
+    public Fragment properties();
 }

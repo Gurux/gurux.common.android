@@ -34,6 +34,8 @@
 
 package gurux.io;
 
+import android.util.SparseArray;
+
 /**
  * Defines a list of commonly supported serial communication rates (baud rates).
  * 
@@ -90,18 +92,18 @@ public enum BaudRate {
     /**
      * Collection of enumerator values.
      */
-    private static java.util.HashMap<Integer, BaudRate> mappings;
+    private static SparseArray mappings;
 
     /**
      * Returns collection of enumerator values.
      * 
      * @return Enumerator values.
      */
-    private static java.util.HashMap<Integer, BaudRate> getMappings() {
+    private static SparseArray<BaudRate> getMappings() {
         if (mappings == null) {
             synchronized (BaudRate.class) {
                 if (mappings == null) {
-                    mappings = new java.util.HashMap<Integer, BaudRate>();
+                    mappings = new SparseArray<BaudRate>();
                 }
             }
         }

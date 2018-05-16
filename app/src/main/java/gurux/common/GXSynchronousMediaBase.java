@@ -163,6 +163,10 @@ public class GXSynchronousMediaBase {
         if (value instanceof Byte) {
             return new byte[]{((Byte) value)};
         }
+        if (value instanceof Character) {
+            return new byte[] {
+                    (byte) ((Character) value).charValue() };
+        }
         if (value instanceof Short) {
             return ByteBuffer.allocate(GXCommon.SHORT_BYTES)
                     .putInt((Short) value).array();
@@ -201,6 +205,10 @@ public class GXSynchronousMediaBase {
         if (type == Byte.class) {
             readBytes[0] = 1;
             return value[0];
+        }
+        if (type == Character.class) {
+            readBytes[0] = 1;
+            return Character.valueOf((char) value[0]);
         }
         java.nio.ByteBuffer buff = java.nio.ByteBuffer.wrap(value);
         if (type == Short.class) {
