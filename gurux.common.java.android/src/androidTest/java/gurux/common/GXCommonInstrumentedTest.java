@@ -59,6 +59,6 @@ public class GXCommonInstrumentedTest {
     public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals("gurux.common.android", appContext.getPackageName());
+        assertEquals("gurux.common.java.android.test", appContext.getPackageName());
     }
 }
