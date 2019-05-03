@@ -35,12 +35,8 @@
 package gurux.common;
 
 import android.app.Activity;
-import android.app.Fragment;
-
+import android.support.v4.app.Fragment;
 import gurux.common.enums.TraceLevel;
-
-// import android.app.Fragment;
-// import android.app.Activity;
 
 /**
  * Common interface for all Media components.
@@ -49,7 +45,6 @@ import gurux.common.enums.TraceLevel;
  * different medias.
  * </p>
  *
- * @author Gurux Ltd.
  */
 public interface IGXMedia {
 
