@@ -38,7 +38,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
-
 import gurux.common.enums.TraceLevel;
 
 /**
@@ -51,7 +50,7 @@ public class GXSynchronousMediaBase {
     /**
      * Trace level.
      */
-    private gurux.common.enums.TraceLevel mTrace;
+    private TraceLevel mTrace;
 
     /**
      * Occurred exception.

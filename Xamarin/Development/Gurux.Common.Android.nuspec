@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Gurux.Common.Android</id>
+    <version>$version$</version>
+    <authors>Gurux Ltd</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">GPL-2.0-only</license>
+    <licenseUrl>https://licenses.nuget.org/GPL-2.0-only</licenseUrl>
+    <icon>GXCommon.png</icon>
+    <description>Gurux.Common.Android class implements interfaces that are needed for Gurux Media components and Gurux Device Framework.</description>
+    <copyright>Copyright (c) 1998-2024 Gurux Ltd. All rights reserved.</copyright>
+    <tags>AMR, AMI IOT</tags>
+    <repository url="https://github.com/gurux/Gurux.Common.Android" />
+  </metadata>
+  <files>
+    <file src="bin\Release\Gurux.Common.Android.dll" target="/lib/MonoAndroid10.0/Gurux.Common.Android.dll" />
+    <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid10.0/Gurux.Common.Android.xml" />
+    <file src="bin\Release\Gurux.Common.Android.dll" target="/lib/MonoAndroid11.0/Gurux.Common.Android.dll" />
+    <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid11.0/Gurux.Common.Android.xml" />
+    <file src="bin\Release\Gurux.Common.Android.dll" target="/lib/MonoAndroid12.0/Gurux.Common.Android.dll" />
+    <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid12.0/Gurux.Common.Android.xml" />
+    <file src="bin\Release\Gurux.Common.Android.dll" target="/lib/MonoAndroid13.0/Gurux.Common.Android.dll" />
+    <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid13.0/Gurux.Common.Android.xml" />
+    <file src="GXCommon.png" target="\GXCommon.png" />
+  </files>
+</package>
