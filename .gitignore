@@ -14,3 +14,7 @@
 .cxx
 local.properties
 .idea/
+Xamarin/Development/.vs/*
+Xamarin/Development/obj/*
+Xamarin/Development/bin/*
+
