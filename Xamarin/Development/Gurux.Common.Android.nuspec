@@ -22,6 +22,6 @@
     <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid12.0/Gurux.Common.Android.xml" />
     <file src="bin\Release\Gurux.Common.Android.dll" target="/lib/MonoAndroid13.0/Gurux.Common.Android.dll" />
     <file src="bin\Release\Gurux.Common.Android.xml" target="/lib/MonoAndroid13.0/Gurux.Common.Android.xml" />
-    <file src="GXCommon.png" target="\GXCommon.png" />
+    <file src="Gurux.Common.png" target="\Gurux.Common.png" />
   </files>
 </package>
