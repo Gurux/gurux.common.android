@@ -7,7 +7,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">GPL-2.0-only</license>
     <licenseUrl>https://licenses.nuget.org/GPL-2.0-only</licenseUrl>
-    <icon>GXCommon.png</icon>
+    <icon>Gurux.Common.png</icon>
     <description>Gurux.Common.Android class implements interfaces that are needed for Gurux Media components and Gurux Device Framework.</description>
     <copyright>Copyright (c) 1998-2024 Gurux Ltd. All rights reserved.</copyright>
     <tags>AMR, AMI IOT</tags>
