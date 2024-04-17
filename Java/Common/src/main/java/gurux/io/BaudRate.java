@@ -43,36 +43,63 @@ import android.util.SparseArray;
  * @author Gurux Ltd.
  */
 public enum BaudRate {
-    /**
-     * 38,400 baud.
-     */
-    BAUD_RATE_38400 (38400),
 
     /**
-     * 19,200 baud.
+     * 921600 baud.
+     */
+    BAUD_RATE_921600 (921600),
+    /**
+     * 576000 baud.
+     */
+    BAUD_RATE_576000 (576000),
+    /**
+     * 460800 baud.
+     */
+    BAUD_RATE_460800 (460800),
+    /**
+     * 230400 baud.
+     */
+    BAUD_RATE_230400 (230400),
+    /**
+     * 115200 baud.
+     */
+    BAUD_RATE_115200 (115200),
+    /**
+     * 78600 baud.
+     */
+    BAUD_RATE_78600 (78600),
+    /**
+     * 57600 baud.
+     */
+    BAUD_RATE_57600 (57600),
+    /**
+     * 38400 baud.
+     */
+    BAUD_RATE_38400 (38400),
+    /**
+     * 19200 baud.
      */
     BAUD_RATE_19200(19200),
     /**
-     * 14,400 baud.
+     * 14400 baud.
      */
     BAUD_RATE_14400(14400),
     /**
-     * 9,600 baud.
+     * 9600 baud.
      */
     BAUD_RATE_9600(9600),
-
     /**
-     * 4,800 baud.
+     * 4800 baud.
      */
     BAUD_RATE_4800(4800),
 
     /**
-     * 2,400 baud.
+     * 2400 baud.
      */
     BAUD_RATE_2400(2400),
 
     /**
-     * 1,200 baud.
+     * 1200 baud.
      */
     BAUD_RATE_1200(1200),
 
