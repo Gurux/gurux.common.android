@@ -1,19 +1,19 @@
 plugins {
-    id 'com.android.library'
+    alias(libs.plugins.androidApplication)
     id 'maven-publish'
     id 'signing'
 }
 
 android {
     namespace 'gurux.common'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
-        minSdk 28
+        minSdk 31
         targetSdk 34
-
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,11 +37,11 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
 }
 
 afterEvaluate {
@@ -85,8 +85,8 @@ afterEvaluate {
                     maven {
                         name = "Maven central"
                         url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                        if (isEnabled) {
-                            credentials {
+                        if (isEnabled){
+                            credentials{
                                 username = sonatypeUsername
                                 password = sonatypePassword
                             }
