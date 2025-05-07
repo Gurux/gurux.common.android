@@ -6,13 +6,12 @@ plugins {
 
 android {
     namespace 'gurux.common'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 31
-        targetSdk 34
+        targetSdk 35
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -50,7 +49,7 @@ afterEvaluate {
                 from components.release
                 groupId = "org.gurux"
                 artifactId = "Gurux.Common.Android"
-                version = "2.0.2"
+                version = "3.0.1"
 
                 signing {
                     sign publishing.publications.release

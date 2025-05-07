@@ -46,7 +46,6 @@ import gurux.common.enums.TraceLevel;
  * Using this interface GXCommunication library enables communication with
  * different medias.
  * </p>
- *
  */
 public interface IGXMedia {
 
@@ -117,8 +116,8 @@ public interface IGXMedia {
     void close();
 
     /**
-     * Sends data asynchronously. No reply from the receiver, whether or not the
-     * operation was successful, is expected.
+     * Sends data asynchronously. No response is expected from the receiver,
+     * regardless of whether the operation succeeds or fails.
      *
      * @param data     Data to send to the device.
      * @param receiver Media depend information of the receiver (optional).
@@ -164,8 +163,8 @@ public interface IGXMedia {
     boolean getIsSynchronous();
 
     /**
-     * Waits for more reply data After SendSync if whole packet is not received
-     * yet.
+     * Continues waiting for the complete response packet after send,
+     * if only a partial response has been received.
      *
      * @param <T>  Media type.
      * @param args Receive data arguments.
@@ -240,18 +239,20 @@ public interface IGXMedia {
      */
     void setConfigurableSettings(int value);
 
-    /*
-     * Shows the media Properties dialog.
+    /**
+     * Shows the media Properties activity.
      *
      * @param activity Activity.
-     * @return Returns true if user has accepted changes.
      */
-    boolean properties(final Activity activity);
+    void properties(final Activity activity);
 
-    /*
-     * Get properties window fragment.
-     *
-     * @return Properties window fragment.
+    /**
+     * @return Returns the fragment that displays the properties.
      */
-    public Fragment properties();
+    Fragment properties();
+
+    /**
+     * @return Returns the media icon resource ID.
+     */
+    int getIconResId();
 }
