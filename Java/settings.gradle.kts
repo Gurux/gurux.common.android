@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Gurux.Common.Android"
-include ':app'
-include ':Common'
+include(":app")
+include(":Common")
