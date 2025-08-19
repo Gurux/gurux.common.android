@@ -10,9 +10,9 @@ android {
         applicationId = "gurux.common.android"
         minSdk = 31
         targetSdk = 36
-        versionCode = 1
-        versionName = "3.0.3"
-
+        versionCode = 3
+        versionName = project.version.toString()
+        version = project.version.toString()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -34,6 +34,30 @@ android {
             withJavadocJar()
         }
     }
+    // Optional: for javadoc suppression
+    tasks.withType<Javadoc>().configureEach {
+        isFailOnError = false
+        (options as? StandardJavadocDocletOptions)?.addStringOption("Xdoclint:none", "-quiet")
+    }
+}
+
+// Rename Common-release.aar to gurux.common.android-<version>.aar
+val versionName = project.version.toString()
+
+val renameAar by tasks.registering(Copy::class) {
+    val inputAar = layout.buildDirectory.file("outputs/aar/Common-release.aar")
+    from(inputAar)
+    into(inputAar.get().asFile.parentFile)
+    rename { "gurux.common.android-$versionName.aar" }
+
+    // Delete the original AAR after copying
+    doLast {
+        inputAar.get().asFile.delete()
+    }
+}
+
+tasks.matching { it.name == "assembleRelease" }.configureEach {
+    finalizedBy(renameAar)
 }
 
 dependencies {
@@ -44,6 +68,19 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 }
 
+tasks.register<Jar>("sourcesJar") {
+    archiveClassifier.set("sources")
+    archiveBaseName.set("gurux.common.android")
+    from(android.sourceSets["main"].java.srcDirs)
+}
+
+tasks.register<Jar>("javadocJar") {
+    archiveClassifier.set("javadoc")
+    archiveBaseName.set("gurux.common.android")
+    archiveVersion.set(project.version.toString())
+    from("README.md")
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -51,8 +88,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "org.gurux"
                 artifactId = "gurux.common.android"
-                version = "3.0.3"
-
+                version = project.version.toString()
                 pom {
                     name.set("gurux.common.android")
                     description.set("gurux.common.android package implements interfaces that are needed for Gurux Media components and Gurux Device Framework. Purpose of Gurux Device Framework is help you to read your devices, meters and sensors easier")
