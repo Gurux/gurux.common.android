@@ -1,5 +1,40 @@
+//
+// --------------------------------------------------------------------------
+//  Gurux Ltd
+//
+//
+//
+// Filename:        $HeadURL$
+//
+// Version:         $Revision$,
+//                  $Date$
+//                  $Author$
+//
+// Copyright (c) Gurux Ltd
+//
+//---------------------------------------------------------------------------
+//
+//  DESCRIPTION
+//
+// This file is a part of Gurux Device Framework.
+//
+// Gurux Device Framework is Open Source software; you can redistribute it
+// and/or modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; version 2 of the License.
+// Gurux Device Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// More information of Gurux products: http://www.gurux.org
+//
+// This code is licensed under the GNU General Public License v2.
+// Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
+//---------------------------------------------------------------------------
+
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.jreleaser)
     id("maven-publish")
     id("signing")
 }
@@ -34,30 +69,6 @@ android {
             withJavadocJar()
         }
     }
-    // Optional: for javadoc suppression
-    tasks.withType<Javadoc>().configureEach {
-        isFailOnError = false
-        (options as? StandardJavadocDocletOptions)?.addStringOption("Xdoclint:none", "-quiet")
-    }
-}
-
-// Rename Common-release.aar to gurux.common.android-<version>.aar
-val versionName = project.version.toString()
-
-val renameAar by tasks.registering(Copy::class) {
-    val inputAar = layout.buildDirectory.file("outputs/aar/Common-release.aar")
-    from(inputAar)
-    into(inputAar.get().asFile.parentFile)
-    rename { "gurux.common.android-$versionName.aar" }
-
-    // Delete the original AAR after copying
-    doLast {
-        inputAar.get().asFile.delete()
-    }
-}
-
-tasks.matching { it.name == "assembleRelease" }.configureEach {
-    finalizedBy(renameAar)
 }
 
 dependencies {
@@ -66,19 +77,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-}
-
-tasks.register<Jar>("sourcesJar") {
-    archiveClassifier.set("sources")
-    archiveBaseName.set("gurux.common.android")
-    from(android.sourceSets["main"].java.srcDirs)
-}
-
-tasks.register<Jar>("javadocJar") {
-    archiveClassifier.set("javadoc")
-    archiveBaseName.set("gurux.common.android")
-    archiveVersion.set(project.version.toString())
-    from("README.md")
 }
 
 afterEvaluate {
@@ -112,6 +110,57 @@ afterEvaluate {
                         developerConnection.set("scm:git:https://github.com/gurux/gurux.common.android.git")
                         url.set("https://github.com/gurux/gurux.common.android")
                     }
+                }
+                // Sign if credentials are available
+                if (project.hasProperty("sonatypeUsername") && project.hasProperty("sonatypePassword")) {
+                    signing {
+                        useGpgCmd()
+                        sign(this@create)
+                    }
+
+                    repositories {
+                        maven {
+                            name = "staging"
+                            url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+jreleaser {
+    gitRootSearch.set(true)
+    project {
+        name.set("gurux.common.android")
+    }
+
+    release {
+        github {
+            skipRelease.set(false)
+            repoOwner.set("Gurux01")
+            name.set("gurux.common.android")
+            tagName.set("v{{projectVersion}}")
+            releaseName.set("Gurux common Android {{projectVersion}}")
+            changelog {
+                preset.set("conventional-commits")
+                formatted.set(org.jreleaser.model.Active.ALWAYS)
+            }
+            token.set(findProperty("githubToken") as String)
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                register("central") {
+                    sign.set(false)
+                    active.set(org.jreleaser.model.Active.ALWAYS)
+                    url.set("https://central.sonatype.com/api/v1/publisher")
+                    username.set(findProperty("sonatypeUsername") as String)
+                    password.set(findProperty("sonatypePassword") as String)
+                    applyMavenCentralRules.set(false)
+                    stagingRepositories.add("build/staging-deploy")
                 }
             }
         }
