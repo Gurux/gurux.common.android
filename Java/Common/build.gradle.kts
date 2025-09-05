@@ -139,7 +139,7 @@ jreleaser {
     release {
         github {
             skipRelease.set(false)
-            repoOwner.set("Gurux01")
+            repoOwner.set("Gurux")
             name.set("gurux.common.android")
             tagName.set("v{{projectVersion}}")
             releaseName.set("Gurux common Android {{projectVersion}}")

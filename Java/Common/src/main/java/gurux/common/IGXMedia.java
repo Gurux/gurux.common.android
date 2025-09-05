@@ -255,4 +255,9 @@ public interface IGXMedia {
      * @return Returns the media icon resource ID.
      */
     int getIconResId();
+
+    /**
+     * @return Returns the media version.
+     */
+    String getVersion();
 }

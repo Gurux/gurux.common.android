@@ -19,3 +19,4 @@ Xamarin/Development/obj/*
 Xamarin/Development/bin/*
 
 Java/jreleaser.yml
+*.zip
